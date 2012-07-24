@@ -263,7 +263,7 @@ public:
 		}
 	};
 
-	bool isNonDimensional(){return *this==NonDimension;}
+	bool isNonDimensional(){return *this==NonDimension();}
 
 //	static void DefineUnit(std::string uname, double sifactor, std::string siexpression){
 	void DefineUnit(std::string uname, double sifactor, std::string siexpression){
@@ -626,7 +626,10 @@ private:
 		return ret;
 	}
 
-	static const Unit NonDimension;
+	static Unit& NonDimension(){
+		static Unit ndm;
+		return ndm;
+	}
 };
 }
 
